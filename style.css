@@ -28,6 +28,22 @@ h1
     transform: rotate(360deg);
     -webkit-transform: rotate(360deg);
 }
+#btn {
+  background-color: #25b99a;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 16px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#btn:hover {opacity: 1}
 #text_Field
 {
     width: 80%;
@@ -50,17 +66,34 @@ h1
 }
 #span
 {
-    margin-top: 14px;
+    /* margin-top: 14px;
     width: 50%;
-    float: left;
+    float: left; */
     font-size: 22px;
+    word-wrap: break-word;
 }
 li
 {
-    display: inline
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
 }
 #wrap_Btn
 {
-    width: 40%;
-    float: right;
+    /* width: 40%;
+    float: right; */
+}
+
+ul{
+    padding-left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+    li {
+        display: block;
+    }
+    #wrap_Btn{
+        text-align: center;
+    }
 }

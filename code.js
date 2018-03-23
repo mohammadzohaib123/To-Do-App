@@ -16,7 +16,7 @@ function add2() {
     var span_Element = document.createElement('span'); //creating the span element that wil placed in li element
     var div_Element = document.createElement('div');
     var data = document.getElementById('text_Field').value; // todo task
-    if (data === "") {
+    if (data == "") {
         alert("Please Enter some task to do Empty task is not allowed");
         console.log("empty task");
     }
@@ -37,17 +37,20 @@ function add2() {
         div_Element.appendChild(done_Btn);
 
         div_Element.setAttribute("id","wrap_Btn")
+        done_Btn.setAttribute("id","btn")
         done_Btn.setAttribute("type", "submit");
         done_Btn.setAttribute("class", "btn btn-default");
         done_Btn.setAttribute("value", "Done");
         done_Btn.setAttribute("onClick", "Done()");
 
         delete_Btn.setAttribute("type", "submit");
+        delete_Btn.setAttribute("id","btn")
         delete_Btn.setAttribute("class", "btn btn-default");
         delete_Btn.setAttribute("value", "Delete");
-        delete_Btn.setAttribute("onClick", "Delete()");
+        delete_Btn.setAttribute("onClick", "Delete(this)");
 
         update_Btn.setAttribute("type", "submit");
+        update_Btn.setAttribute("id","btn")
         update_Btn.setAttribute("class", "btn btn-default");
         update_Btn.setAttribute("value", "Update");
         update_Btn.setAttribute("onClick", "Update(this)");
@@ -57,6 +60,7 @@ function add2() {
         })
         .then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
+            postKey = docRef.id;
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);
@@ -64,11 +68,11 @@ function add2() {
         
     }
 }
-    function Delete() {
-        var ul = document.getElementById('bottom');
-        var li = ul.children;
-        console.log(li);
-        ul.removeChild(li[0]);
+    function Delete(ele) {
+       
+        var ele_Parent=ele.parentNode.parentNode;
+        console.log(ele_Parent);
+        ele_Parent.parentNode.removeChild(ele_Parent);
     }
 
     function Update(element) {
@@ -76,4 +80,9 @@ function add2() {
         var update = prompt("Enter your updated task:");
         element.parentElement.children.item(0).innerHTML = update;
 
+    }
+    function Done()
+    {
+        document.getElementById("span").style.textDecoration="line-through";
+        document.getElementById("span").style.color="#0dab8a";
     }
